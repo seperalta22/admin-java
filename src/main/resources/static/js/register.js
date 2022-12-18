@@ -29,9 +29,7 @@ async function registerUser() {
         body: JSON.stringify(datos)
         });
 
-    const response = await request.json();
-
-
-
+    alert ("Usuario registrado correctamente");
+    window.location.href = "login.html";
 }
 

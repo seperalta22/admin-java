@@ -4,23 +4,12 @@ $(document).ready(function () {
 });
 
 
-async function registerUser() {
+async function login() {
     let datos = {};
-    datos.name = document.getElementById("name").value;
-    datos.last_name = document.getElementById("lastName").value;
-    datos.email = document.getElementById("email").value;
-    datos.phone = document.getElementById("phone").value;
-    datos.password = document.getElementById("password").value;
+    datos.email = document.getElementById("Email").value;
+    datos.password = document.getElementById("Password").value;
 
-
-    let repeatPassword = document.getElementById("repeatPassword").value;
-
-    if (datos.password !== repeatPassword) {
-        alert("Las contraseñas no coinciden");
-        return;
-    }
-
-    const request = await fetch('api/users', {
+    const request = await fetch('api/login', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -29,7 +18,12 @@ async function registerUser() {
         body: JSON.stringify(datos)
     });
 
-    const response = await request.json();
+    const response = await request.text();
+    if (response === "true") {
+        window.location.href = "/users.html";
+    }else {
+        alert("Usuario o contraseña incorrectos");
+    }
 
 
 
