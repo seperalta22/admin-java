@@ -6,16 +6,19 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-@Configuration
-public interface UserDao {
 
+public interface UserDao {
 
     List<User> getUsers ();
 
     void deleteUser(Long id);
 
     void registerUser(User user);
+
+    boolean  getUserByCredentials(User user) ;
+
+
+
 }
 
 
